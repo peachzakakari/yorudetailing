@@ -497,6 +497,10 @@
     transform: translateY(0);
 }
     </style>
+    <meta name="description" content="YO-RU Detailing บริการล้างรถและเคลือบแก้วพรีเมียมในชลบุรี ดูแลรถคุณด้วยผลิตภัณฑ์ชั้นนำ CarPro, Gyeon, 3D">
+<meta name="keywords" content="ล้างรถชลบุรี, เคลือบแก้วชลบุรี, Detailing ชลบุรี, ล้างมอเตอร์ไซค์">
+
+<link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 
@@ -551,7 +555,7 @@
         </div>
     </div>
 
-    <div class="brands-section" id="brands">
+    <div class="brands-section reveal" id="brands">
         <div class="container">
             <div class="brands-title">WE USE SELECTED PREMIUM PRODUCTS</div>
             <p class="text-muted text-center mb-4 small">คัดสรรผลิตภัณฑ์คุณภาพสูงจากทั่วโลก</p>
@@ -596,7 +600,7 @@
         </div>
     </div>
 
-    <section id="packages" class="section-padding">
+    <section id="packages" class="section-padding reveal">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title">PREMIUM WASH PROGRAMS</h2>
@@ -749,7 +753,7 @@
         </div>
     </section>
 
-    <section id="coating" class="section-padding" style="background-color: #050505;">
+    section id="coating" class="section-padding reveal">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title">GLASS COATING & RESTORATION</h2>
@@ -1041,7 +1045,10 @@
             </div>
         </div>
     </section>
-
+<a href="tel:0872178899" class="floating-contact">
+    <i class="fas fa-phone-alt"></i>
+    <span class="d-none d-md-inline">จองคิวรับบริการ</span>
+</a>
     <footer id="contact">
         <div class="container">
             <div class="mb-4">
@@ -1085,13 +1092,22 @@
                 });
             });
         });
+        function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+window.addEventListener("scroll", reveal);
+// สั่งให้ทำงานครั้งแรกทันทีที่โหลดหน้าเสร็จ
+reveal();
     </script>
-    <a href="tel:0872178899" class="floating-btn">
-    <i class="fas fa-phone"></i>
-    <span>จองคิวทันที</span>
-</a>
-
-<style>
+  <style>
 .floating-btn {
     position: fixed;
     bottom: 30px;
@@ -1110,9 +1126,41 @@
     transition: 0.3s;
 }
 .floating-btn:hover { transform: scale(1.1); color: #000; }
+.floating-contact {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--accent); /* สีทอง */
+    color: #000 !important;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none !important;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+    z-index: 2000; /* ให้อยู่เหนือทุกอย่าง */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.floating-contact:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.7);
+}
+
+@media (max-width: 768px) {
+    .floating-contact {
+        bottom: 20px;
+        right: 20px;
+        padding: 15px; /* ในมือถือให้เป็นวงกลม */
+        border-radius: 50%;
+    }
+}
 </style>
 </body>
 </html>
+
 
 
 
