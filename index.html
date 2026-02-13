@@ -363,36 +363,6 @@
             /* ปรับขนาดโลโก้ในมือถือให้พอดี */
             .navbar-brand img { max-height: 50px !important; } 
         }
-     
-        /* =========================================
-           MOBILE HORIZONTAL SCROLL (ปัดข้างในมือถือ)
-           ========================================= */
-        @media (max-width: 768px) {
-            .mobile-scroll-row {
-                display: flex !important;
-                flex-wrap: nowrap !important; /* ห้ามขึ้นบรรทัดใหม่ */
-                overflow-x: auto;             /* ให้เลื่อนแนวนอนได้ */
-                gap: 15px;                    /* ระยะห่างระหว่างการ์ด */
-                padding-bottom: 20px;         /* เผื่อที่ให้เงาด้านล่าง */
-                scroll-snap-type: x mandatory; /* ให้เด้งเข้าล็อคทีละใบ */
-                -webkit-overflow-scrolling: touch; /* เลื่อนลื่นๆ บน iPhone */
-                
-                /* ซ่อน Scrollbar ไม่ให้รกตา */
-                scrollbar-width: none; 
-                -ms-overflow-style: none;
-            }
-            
-            .mobile-scroll-row::-webkit-scrollbar { 
-                display: none; 
-            }
-
-            /* ปรับขนาดการ์ดในมือถือ */
-            .mobile-scroll-row > div {
-                flex: 0 0 85%;    /* ให้กว้าง 85% ของจอ (จะได้เห็นขอบการ์ดถัดไปนิดนึง) */
-                max-width: 85%;
-                scroll-snap-align: center; /* เวลาเลื่อนให้หยุดตรงกลาง */
-            }
-        }
     </style>
 </head>
 <body>
@@ -993,6 +963,7 @@
     </script>
 </body>
 </html>
+
 
 
 
