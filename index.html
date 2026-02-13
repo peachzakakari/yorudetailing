@@ -75,35 +75,54 @@
             align-items: center;
         }
 
-        /* --- ปรับแต่งเมนูใหม่ (Navbar Menu) --- */
+        /* --- [FIXED] ปรับแต่งเมนูและกรอบเมนู (Navbar Menu) --- */
         .navbar-nav {
-            gap: 10px; /* เพิ่มระยะห่างระหว่างแต่ละเมนู */
-            padding: 5px 0;
+            gap: 12px; /* เพิ่มระยะห่างระหว่างเมนู */
+            padding: 15px 0; /* เพิ่ม Padding บน-ล่าง ป้องกันเมนูชิดขอบ Navbar เกินไป */
         }
 
         .nav-link {
             color: var(--text-sub) !important;
-            font-size: 0.8rem; 
+            font-size: 0.85rem; 
             text-transform: uppercase;
             font-weight: 600; 
             letter-spacing: 1.5px;
             cursor: pointer;
             transition: all 0.3s ease;
             
-            /* เพิ่มกรอบให้ทุกเมนู */
+            /* สร้างกรอบให้เมนู */
             border: 1px solid rgba(255, 255, 255, 0.1); 
-            padding: 8px 15px !important; /* เพิ่มพื้นที่ด้านในไม่ให้เบียดขอบ */
-            margin-left: 0 !important; /* ใช้ gap แทน */
-            border-radius: 4px;
+            padding: 10px 20px !important; /* เพิ่ม Padding ภายในกรอบให้กว้างขึ้น */
+            border-radius: 6px;
             display: inline-block;
+            margin-bottom: 0; /* ล้างค่า margin ที่อาจทำให้ขอบเพี้ยน */
         }
 
-        /* เมื่อชี้เมนู (Hover) ให้สว่างเป็นสีทองทั้งตัวอักษรและกรอบ */
-        .nav-link:hover { 
+        /* เอฟเฟกต์สีทองเมื่อ Hover หรือ Active */
+        .nav-link:hover, .nav-link:focus { 
             color: var(--accent) !important; 
             border-color: var(--accent);
-            background-color: rgba(212, 175, 55, 0.05); /* เพิ่มสีทองจางๆ ในพื้นหลัง */
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); /* เพิ่มรัศมีสีทองจางๆ */
+            background-color: rgba(212, 175, 55, 0.08); /* พื้นหลังสีทองจางๆ */
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3); /* เพิ่มรัศมีแสงสีทอง */
+            transform: translateY(-2px); /* ลอยขึ้นเล็กน้อยเวลาชี้ */
+        }
+
+        /* ปรับแต่งพิเศษสำหรับหน้าจอมือถือ (Popup Menu) */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background-color: rgba(0, 0, 0, 0.98); /* พื้นหลังเข้มขึ้นเพื่อให้เห็นเมนูชัดเจน */
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 15px; /* เว้นระยะห่างจากแถบด้านบน ป้องกันขอบแหว่ง */
+                border: 1px solid var(--border-color);
+            }
+            .navbar-nav {
+                gap: 8px;
+            }
+            .nav-link {
+                display: block; /* ในมือถือให้กรอบยาวเต็มบรรทัด */
+                text-align: center;
+            }
         }
 
         /* ปรับแต่งปุ่ม Hamburger ในมือถือให้สมดุล */
@@ -488,7 +507,7 @@
                 <i class="fas fa-bars text-white fs-4"></i>
             </button>
 
-            <div class="collapse navbar-collapse flex-grow-0 mt-3 mt-lg-0" id="navbarNav">
+            <div class="collapse navbar-collapse flex-grow-0 mt-2" id="navbarNav">
                 <ul class="navbar-nav text-center">
                     <li class="nav-item"><a class="nav-link scroll-link" href="#packages">WASH SERVICES</a></li>
                     <li class="nav-item"><a class="nav-link scroll-link" href="#coating">CERAMIC COATING</a></li>
@@ -1056,3 +1075,4 @@
     </script>
 </body>
 </html>
+
