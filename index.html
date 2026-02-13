@@ -75,18 +75,47 @@
             align-items: center;
         }
 
+        /* --- ปรับแต่งเมนูใหม่ (Navbar Menu) --- */
+        .navbar-nav {
+            gap: 10px; /* เพิ่มระยะห่างระหว่างแต่ละเมนู */
+            padding: 5px 0;
+        }
+
         .nav-link {
             color: var(--text-sub) !important;
-            font-size: 0.85rem; 
+            font-size: 0.8rem; 
             text-transform: uppercase;
             font-weight: 600; 
             letter-spacing: 1.5px;
             cursor: pointer;
-            transition: 0.3s;
-            margin-left: 15px;
+            transition: all 0.3s ease;
+            
+            /* เพิ่มกรอบให้ทุกเมนู */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 8px 15px !important; /* เพิ่มพื้นที่ด้านในไม่ให้เบียดขอบ */
+            margin-left: 0 !important; /* ใช้ gap แทน */
+            border-radius: 4px;
+            display: inline-block;
         }
+
+        /* เมื่อชี้เมนู (Hover) ให้สว่างเป็นสีทองทั้งตัวอักษรและกรอบ */
         .nav-link:hover { 
             color: var(--accent) !important; 
+            border-color: var(--accent);
+            background-color: rgba(212, 175, 55, 0.05); /* เพิ่มสีทองจางๆ ในพื้นหลัง */
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); /* เพิ่มรัศมีสีทองจางๆ */
+        }
+
+        /* ปรับแต่งปุ่ม Hamburger ในมือถือให้สมดุล */
+        @media (max-width: 991px) {
+            .navbar-nav {
+                margin-top: 20px;
+                gap: 5px;
+            }
+            .nav-link {
+                display: block; /* ในมือถือให้ยาวเต็มบรรทัด */
+                margin-bottom: 5px;
+            }
         }
 
         /* Hero Section */
@@ -155,7 +184,10 @@
             letter-spacing: 1px;
         }
 
-        /* Brands Section */
+        /* ===========================================
+           [FIXED] BRANDS SECTION CSS (กลับมาใช้ Grid)
+           ===========================================
+        */
         .brands-section {
             background-color: #080808;
             padding: 40px 0;
@@ -170,41 +202,38 @@
             margin-bottom: 25px;
             text-transform: uppercase;
         }
+        
+        /* ใช้ Grid Layout แทน Flex เพื่อความเป็นระเบียบ */
         .brands-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* มือถือ: 2 แถว */
+            gap: 20px;
+            margin-top: 30px;
         }
+        
+        @media (min-width: 768px) {
+            .brands-grid {
+                grid-template-columns: repeat(6, 1fr); /* คอม: 6 แถว */
+            }
+        }
+
         .brand-item {
-            text-align: center;
-            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid #222;
-            background: #000;
-            min-width: 150px;
+            border-radius: 8px;
             transition: 0.3s;
         }
         .brand-item:hover {
             border-color: var(--accent);
             transform: translateY(-3px);
         }
-        .brand-name {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-            display: block;
-        }
-        .brand-origin {
-            font-size: 0.7rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: block;
-        }
         
-        /* ⚠️ เพิ่ม CSS ส่วน Logo Wrapper และ Brand Img ที่ขาดหายไป */
+        /* เพิ่ม CSS สำหรับจัดการรูปโลโก้ที่หายไป */
         .logo-wrapper {
             height: 80px; 
             display: flex;
@@ -227,7 +256,21 @@
             filter: grayscale(0%) brightness(1);
             opacity: 1;
         }
-        /* จบส่วนที่เพิ่มใหม่ */
+
+        .brand-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            display: block;
+        }
+        .brand-origin {
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+        }
 
         /* Section Styling */
         .section-padding { padding: 80px 0; }
@@ -402,6 +445,9 @@
                 scroll-snap-type: x mandatory; /* ให้เด้งเข้าล็อคทีละใบ */
                 -webkit-overflow-scrolling: touch; /* เลื่อนลื่นๆ บน iPhone */
                 
+                /* [FIXED] Force start for Motorbike section */
+                justify-content: flex-start !important;
+                
                 /* ซ่อน Scrollbar ไม่ให้รกตา */
                 scrollbar-width: none; 
                 -ms-overflow-style: none;
@@ -442,7 +488,7 @@
                 <i class="fas fa-bars text-white fs-4"></i>
             </button>
 
-            <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+            <div class="collapse navbar-collapse flex-grow-0 mt-3 mt-lg-0" id="navbarNav">
                 <ul class="navbar-nav text-center">
                     <li class="nav-item"><a class="nav-link scroll-link" href="#packages">WASH SERVICES</a></li>
                     <li class="nav-item"><a class="nav-link scroll-link" href="#coating">CERAMIC COATING</a></li>
@@ -556,10 +602,10 @@
                         <div class="package-meta">3 - 4 HOURS <span class="badge-hot ms-1">HOT</span></div>
                         <p class="text-muted mb-4 small">รถใช้งานทุกวัน หรือรถครอบครัว เน้นความสะอาดลึก</p>
                         <div class="price-list mb-4">
-                            <div class="price-row"><span>S</span> <span>790-1,290</span></div>
-                            <div class="price-row"><span>M</span> <span>890-1,490</span></div>
-                            <div class="price-row"><span>L</span> <span>990-1,690</span></div>
-                            <div class="price-row"><span>XL</span> <span>1,290-1,990</span></div>
+                            <div class="price-row"><span>S</span> <span>690-1,200</span></div>
+                            <div class="price-row"><span>M</span> <span>790-1,400</span></div>
+                            <div class="price-row"><span>L</span> <span>890-1,600</span></div>
+                            <div class="price-row"><span>XL</span> <span>1,190-1,800</span></div>
                         </div>
                         <div class="feature-box">
                             <div><i class="fas fa-check"></i> Basic Wash ทั้งหมด</div>
@@ -630,7 +676,7 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center mobile-scroll-row">
+            <div class="row mobile-scroll-row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="pricing-col">
                         <div class="package-title">BIKE WASH</div>
