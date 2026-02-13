@@ -143,7 +143,25 @@
             color: var(--text-main);
             margin-bottom: 10px;
             letter-spacing: 3px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            
+            /* --- ส่วนที่อัพเกรด: Glassmorphism --- */
+            background: rgba(0, 0, 0, 0.3);          /* พื้นหลังดำโปร่งแสง */
+            backdrop-filter: blur(8px);             /* ทำให้พื้นหลังเบลอแบบกระจกฝ้า */
+            -webkit-backdrop-filter: blur(8px);
+            padding: 20px 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* เส้นขอบขาวบางๆ */
+            display: inline-block;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        /* ปรับขนาดตัวหนังสือในมือถือให้สมดุลกับกรอบใหม่ */
+        @media (max-width: 768px) {
+            .hero-title { 
+                font-size: 2.2rem; 
+                padding: 15px 25px;
+                letter-spacing: 2px;
+            }
         }
         .hero-subtitle {
             font-size: 1.1rem;
@@ -467,6 +485,17 @@
                 flex-wrap: wrap !important;
             }
         }
+        /* สร้าง Effect รอไว้ */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+/* เมื่อเลื่อนมาถึงให้แสดงผล */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
     </style>
 </head>
 <body>
@@ -1057,8 +1086,34 @@
             });
         });
     </script>
+    <a href="tel:0872178899" class="floating-btn">
+    <i class="fas fa-phone"></i>
+    <span>จองคิวทันที</span>
+</a>
+
+<style>
+.floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent); /* สีทอง [cite: 231] */
+    color: #000;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+.floating-btn:hover { transform: scale(1.1); color: #000; }
+</style>
 </body>
 </html>
+
 
 
 
